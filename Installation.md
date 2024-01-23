@@ -29,3 +29,31 @@ kubectl get secret --namespace <YOUR-NAMESPACE> loki-grafana -o jsonpath="{.data
 
 
 
+
+Ingress with Traefik
+If you want to create an IngressRoute and you are using traefik can you apply the following
+
+kubectl apply -f ingress.yml
+
+
+
+
+![image](https://github.com/KarthiCholan/GrafanaLoki/assets/108706606/69c45c15-1902-4e0e-a997-ca3727802427)
+
+
+LogQL sample queries
+
+Query all logs from the container label
+
+{container="uptime-kuma"} 
+
+
+query all logs from the container stream and filter on error
+
+{container="uptime-kuma"} |= "error"
+
+
+query all logs from the pod label of uptime-kuma-8d45g32fd-lk8rl
+
+{pod="uptime-kuma-8d45g32fd-lk8rl"}
+
